@@ -1984,5 +1984,7 @@
   "bugTrackerSortMostDiscussed": "返信が多い順",
   "bugTrackerStaff": "スタッフ",
   "eewSpokenLocalIntensity": "現在地の予想震度、{intensity}。",
-  "eewSpokenMaxIntensity": "予想最大震度、{intensity}。"
+  "eewSpokenMaxIntensity": "予想最大震度、{intensity}。",
+  "eewSpokenAnnouncementTitle": "予想震度を読み上げる",
+  "eewSpokenAnnouncementDescription": "強震モニタを開いているとき、警報音の前に予想震度を音声で読み上げます。"
 }

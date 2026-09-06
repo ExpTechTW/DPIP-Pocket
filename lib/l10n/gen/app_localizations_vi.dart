@@ -3311,4 +3311,11 @@ class AppLocalizationsVi extends AppLocalizations {
   String eewSpokenMaxIntensity(String intensity) {
     return 'Cường độ tối đa dự kiến: $intensity.';
   }
+
+  @override
+  String get eewSpokenAnnouncementTitle => 'Đọc cường độ dự kiến';
+
+  @override
+  String get eewSpokenAnnouncementDescription =>
+      'Khi mở màn hình theo dõi động đất, cường độ dự kiến được đọc lên trước khi phát âm báo động.';
 }

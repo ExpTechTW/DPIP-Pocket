@@ -1,6 +1,7 @@
 import 'package:dpip/core/build/demo_flags.dart';
 import 'package:dpip/core/di/shared_deps.dart';
 import 'package:dpip/core/settings/eew_cwa_only_settings.dart';
+import 'package:dpip/core/settings/eew_spoken_announcement_settings.dart';
 import 'package:dpip/core/realtime/elapsed.dart';
 import 'package:dpip/core/realtime/realtime_channel.dart';
 import 'package:dpip/core/realtime/realtime_config.dart';
@@ -37,6 +38,7 @@ import 'package:provider/single_child_widget.dart';
 List<SingleChildWidget> earthquakeProviders(SharedDeps deps) {
   final api = EarthquakeApi(deps.apiClient);
   final eewCwaOnly = EewCwaOnlySettings(deps.settings);
+  final eewSpokenAnnouncement = EewSpokenAnnouncementSettings(deps.settings);
   final repository = EewRepositoryImpl(api, cwaOnly: () => eewCwaOnly.enabled);
   final reports = ReportRepositoryImpl(api);
   final tremStations = TremStationRepositoryImpl(deps.apiClient);
@@ -92,6 +94,9 @@ List<SingleChildWidget> earthquakeProviders(SharedDeps deps) {
   return [
     Provider<EewRepository>.value(value: repository),
     ChangeNotifierProvider<EewCwaOnlySettings>.value(value: eewCwaOnly),
+    ChangeNotifierProvider<EewSpokenAnnouncementSettings>.value(
+      value: eewSpokenAnnouncement,
+    ),
     Provider<ReportRepository>.value(value: reports),
     ChangeNotifierProvider<EewRealtimeController>.value(value: eewController),
     ChangeNotifierProvider<RtsRealtimeController>.value(value: rtsController),

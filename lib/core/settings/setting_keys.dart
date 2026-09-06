@@ -237,6 +237,13 @@ abstract final class SettingKeys {
     'earthquake.eewCwaOnly',
   );
 
+  /// Whether the visible seismic monitor speaks the estimated intensity before
+  /// the EEW warning sound. Defaults to true. See
+  /// `EewSpokenAnnouncementSettings`.
+  static const SettingKey<bool> eewSpokenAnnouncement = SettingKey<bool>._(
+    'earthquake.eewSpokenAnnouncement',
+  );
+
   /// Selected LB / Core API region. See `RegionSelection`.
   ///
   /// Colon-form kept as-is (pre-existing storage address).

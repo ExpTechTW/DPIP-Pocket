@@ -3249,4 +3249,11 @@ class AppLocalizationsJa extends AppLocalizations {
   String eewSpokenMaxIntensity(String intensity) {
     return '予想最大震度、$intensity。';
   }
+
+  @override
+  String get eewSpokenAnnouncementTitle => '予想震度を読み上げる';
+
+  @override
+  String get eewSpokenAnnouncementDescription =>
+      '強震モニタを開いているとき、警報音の前に予想震度を音声で読み上げます。';
 }

@@ -3328,4 +3328,11 @@ class AppLocalizationsFil extends AppLocalizations {
   String eewSpokenMaxIntensity(String intensity) {
     return 'Tinatayang pinakamataas na intensidad: $intensity.';
   }
+
+  @override
+  String get eewSpokenAnnouncementTitle => 'Basahin ang tinatayang intensidad';
+
+  @override
+  String get eewSpokenAnnouncementDescription =>
+      'Kapag bukas ang seismic monitor, binabasa nang malakas ang tinatayang intensidad bago tumunog ang babala.';
 }

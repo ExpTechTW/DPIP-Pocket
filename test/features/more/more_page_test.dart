@@ -20,6 +20,7 @@ import 'package:dpip/core/notifications/notification_service.dart';
 import 'package:dpip/core/permissions/permission_health.dart';
 import 'package:dpip/core/settings/default_map_layer_controller.dart';
 import 'package:dpip/core/settings/eew_cwa_only_settings.dart';
+import 'package:dpip/core/settings/eew_spoken_announcement_settings.dart';
 import 'package:dpip/core/settings/experimental_settings.dart';
 import 'package:dpip/core/settings/region_store.dart';
 import 'package:dpip/core/settings/settings_store.dart';
@@ -159,6 +160,9 @@ Future<void> _pump(
           create: (_) => DefaultMapLayerController(settings),
         ),
         ChangeNotifierProvider(create: (_) => EewCwaOnlySettings(settings)),
+        ChangeNotifierProvider(
+          create: (_) => EewSpokenAnnouncementSettings(settings),
+        ),
         ChangeNotifierProvider(create: (_) => ExperimentalSettings(settings)),
         ChangeNotifierProvider(create: (_) => RegionStore(settings)),
         Provider(create: (_) => const TownDirectory({})),
@@ -305,6 +309,33 @@ void main() {
     expect(play.dy, lessThan(beta.dy));
     expect(beta.dy, lessThan(partner.dy));
   });
+
+  testWidgets(
+    'the spoken-announcement row starts on and the whole row toggles',
+    (tester) async {
+      await _pump(tester, _router([]));
+      const label = 'Speak estimated intensity';
+      Switch speechSwitch() => tester.widget<Switch>(
+        find.descendant(
+          of: find.widgetWithText(ListTile, label),
+          matching: find.byType(Switch),
+        ),
+      );
+
+      // Defaults to on: an announcement nobody opted into is the point.
+      expect(speechSwitch().value, isTrue);
+
+      // The tap lands on the row, not the switch — a control you can only hit by
+      // aiming at the switch is a much smaller target than the row it sits in.
+      await tester.tap(find.widgetWithText(ListTile, label));
+      await tester.pump(const Duration(milliseconds: 100));
+      expect(speechSwitch().value, isFalse);
+
+      await tester.tap(find.widgetWithText(ListTile, label));
+      await tester.pump(const Duration(milliseconds: 100));
+      expect(speechSwitch().value, isTrue);
+    },
+  );
 
   testWidgets('permission check sits with the notification settings', (
     tester,

@@ -1984,5 +1984,7 @@
   "bugTrackerSortMostDiscussed": "Paling banyak dibahas",
   "bugTrackerStaff": "Staf",
   "eewSpokenLocalIntensity": "Perkiraan intensitas di lokasi Anda: {intensity}.",
-  "eewSpokenMaxIntensity": "Perkiraan intensitas maksimum: {intensity}."
+  "eewSpokenMaxIntensity": "Perkiraan intensitas maksimum: {intensity}.",
+  "eewSpokenAnnouncementTitle": "Bacakan intensitas perkiraan",
+  "eewSpokenAnnouncementDescription": "Saat monitor gempa terbuka, intensitas perkiraan dibacakan sebelum suara peringatan diputar."
 }

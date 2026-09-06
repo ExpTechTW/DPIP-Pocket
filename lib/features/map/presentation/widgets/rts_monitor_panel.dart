@@ -21,6 +21,7 @@ import 'package:dpip/features/earthquake/domain/eew.dart';
 import 'package:dpip/features/earthquake/domain/eew_local_estimate.dart';
 import 'package:dpip/features/earthquake/domain/rts.dart';
 import 'package:dpip/features/map/presentation/pages/map_page.dart';
+import 'package:dpip/core/settings/eew_spoken_announcement_settings.dart';
 import 'package:dpip/features/map/presentation/monitor_eew_announcement_controller.dart';
 import 'package:dpip/features/map/presentation/widgets/monitor_eew_card.dart';
 import 'package:dpip/l10n/gen/app_localizations.dart';
@@ -75,6 +76,10 @@ class _RtsMonitorPanelState extends State<RtsMonitorPanel>
   bool _visible = true;
   VisibleTab? _visibleTab;
   MonitorEewAnnouncementController? _announcement;
+
+  /// The user's on/off switch for the announcement, watched so flipping it
+  /// takes effect on the alert already on screen rather than the next one.
+  EewSpokenAnnouncementSettings? _speechSettings;
   AppLocalizations? _l10n;
   String _languageTag = 'zh-TW';
   AppLifecycleState? _lifecycleState;
@@ -125,6 +130,12 @@ class _RtsMonitorPanelState extends State<RtsMonitorPanel>
       _visibleTab = visibleTab;
       visibleTab?.addListener(_syncVisibility);
       _syncVisibility();
+    }
+    final speechSettings = context.read<EewSpokenAnnouncementSettings?>();
+    if (!identical(speechSettings, _speechSettings)) {
+      _speechSettings?.removeListener(_syncAnnouncement);
+      _speechSettings = speechSettings;
+      speechSettings?.addListener(_syncAnnouncement);
     }
     _syncAnnouncement();
   }
@@ -180,7 +191,12 @@ class _RtsMonitorPanelState extends State<RtsMonitorPanel>
     if (controller == null || l10n == null) return;
     final foreground =
         _lifecycleState == null || _lifecycleState == AppLifecycleState.resumed;
-    controller.setActive(_isMonitorOnScreen && foreground);
+    // Absent provider means a test that supplied neither — announce, matching
+    // the default. Switching off deactivates the controller, which stops any
+    // phrase in flight and releases the notification the gate was holding, so
+    // the warning sound is never delayed by a setting the user just turned off.
+    final speechEnabled = _speechSettings?.enabled ?? true;
+    controller.setActive(speechEnabled && _isMonitorOnScreen && foreground);
     controller.update(
       widget.eew.state,
       languageTag: _languageTag,
@@ -229,6 +245,7 @@ class _RtsMonitorPanelState extends State<RtsMonitorPanel>
     widget.eew.removeListener(_onData);
     widget.eewIndex.removeListener(_onData);
     _visibleTab?.removeListener(_syncVisibility);
+    _speechSettings?.removeListener(_syncAnnouncement);
     WidgetsBinding.instance.removeObserver(this);
     _announcement?.dispose();
     super.dispose();

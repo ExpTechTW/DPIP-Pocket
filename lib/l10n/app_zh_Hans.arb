@@ -1984,5 +1984,7 @@
   "bugTrackerSortMostDiscussed": "最多讨论",
   "bugTrackerStaff": "工作人员",
   "eewSpokenLocalIntensity": "所在地预估烈度，{intensity}。",
-  "eewSpokenMaxIntensity": "预估最大烈度，{intensity}。"
+  "eewSpokenMaxIntensity": "预估最大烈度，{intensity}。",
+  "eewSpokenAnnouncementTitle": "朗读预估烈度",
+  "eewSpokenAnnouncementDescription": "打开强震监视器时，先用语音朗读预估烈度，再播放警示音。"
 }

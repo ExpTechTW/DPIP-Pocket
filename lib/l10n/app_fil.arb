@@ -1984,5 +1984,7 @@
   "bugTrackerSortMostDiscussed": "Pinakamaraming talakayan",
   "bugTrackerStaff": "Kawani",
   "eewSpokenLocalIntensity": "Tinatayang intensidad sa iyong lokasyon: {intensity}.",
-  "eewSpokenMaxIntensity": "Tinatayang pinakamataas na intensidad: {intensity}."
+  "eewSpokenMaxIntensity": "Tinatayang pinakamataas na intensidad: {intensity}.",
+  "eewSpokenAnnouncementTitle": "Basahin ang tinatayang intensidad",
+  "eewSpokenAnnouncementDescription": "Kapag bukas ang seismic monitor, binabasa nang malakas ang tinatayang intensidad bago tumunog ang babala."
 }
