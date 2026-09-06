@@ -11,6 +11,7 @@ import 'package:dpip/features/bug_tracker/bug_tracker_counter.dart';
 import 'package:dpip/core/network/endpoint_health.dart';
 import 'package:dpip/core/settings/default_map_layer_controller.dart';
 import 'package:dpip/core/settings/eew_cwa_only_settings.dart';
+import 'package:dpip/core/settings/eew_spoken_announcement_settings.dart';
 import 'package:dpip/core/settings/experimental_settings.dart';
 import 'package:dpip/core/settings/region_store.dart';
 import 'package:dpip/core/version/app_build.dart';
@@ -86,6 +87,12 @@ class MorePage extends StatelessWidget {
                   ),
                   onTap: () => context.pushNamed(AppRoutes.permissions),
                 ),
+                // In the notification group rather than under 顯示: what this
+                // switches is the order of two *sounds*, not anything drawn.
+                // Below 權限檢查, which has to stay next to the notification
+                // settings — it is the row people reach for when an alert did
+                // not arrive.
+                const _SpokenAnnouncementTile(),
                 // What the system says actually went out — a status page, kept
                 // in the notification group because that is where you look when
                 // an alert did not arrive.
@@ -469,6 +476,35 @@ class _MoreTile extends StatelessWidget {
       subtitle: subtitle == null ? null : Text(subtitle!),
       trailing: trailing ?? const Icon(Icons.chevron_right),
       onTap: onTap,
+    );
+  }
+}
+
+/// The monitor's spoken-intensity switch.
+///
+/// A row that acts rather than navigates, so it carries its own trailing
+/// [Switch] instead of `_MoreTile`'s chevron, and the whole row toggles — a
+/// switch you can only hit by aiming at the switch is a smaller target than the
+/// row it sits in.
+class _SpokenAnnouncementTile extends StatelessWidget {
+  const _SpokenAnnouncementTile();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final settings = context.watch<EewSpokenAnnouncementSettings>();
+    final enabled = settings.enabled;
+    return _MoreTile(
+      icon: enabled
+          ? Icons.record_voice_over_outlined
+          : Icons.voice_over_off_outlined,
+      title: l10n.eewSpokenAnnouncementTitle,
+      subtitle: l10n.eewSpokenAnnouncementDescription,
+      trailing: Switch(
+        value: enabled,
+        onChanged: (value) => settings.setEnabled(value),
+      ),
+      onTap: () => settings.setEnabled(!enabled),
     );
   }
 }

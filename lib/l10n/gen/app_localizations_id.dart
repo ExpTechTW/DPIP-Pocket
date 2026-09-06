@@ -3321,4 +3321,11 @@ class AppLocalizationsId extends AppLocalizations {
   String eewSpokenMaxIntensity(String intensity) {
     return 'Perkiraan intensitas maksimum: $intensity.';
   }
+
+  @override
+  String get eewSpokenAnnouncementTitle => 'Bacakan intensitas perkiraan';
+
+  @override
+  String get eewSpokenAnnouncementDescription =>
+      'Saat monitor gempa terbuka, intensitas perkiraan dibacakan sebelum suara peringatan diputar.';
 }

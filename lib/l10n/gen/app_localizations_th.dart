@@ -3303,4 +3303,11 @@ class AppLocalizationsTh extends AppLocalizations {
   String eewSpokenMaxIntensity(String intensity) {
     return 'คาดการณ์ความรุนแรงสูงสุด: $intensity';
   }
+
+  @override
+  String get eewSpokenAnnouncementTitle => 'อ่านออกเสียงความรุนแรงที่คาดการณ์';
+
+  @override
+  String get eewSpokenAnnouncementDescription =>
+      'เมื่อเปิดจอเฝ้าระวังแผ่นดินไหว จะอ่านออกเสียงความรุนแรงที่คาดการณ์ก่อนเสียงเตือน';
 }

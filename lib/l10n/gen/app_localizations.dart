@@ -6286,6 +6286,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Estimated maximum intensity: {intensity}.'**
   String eewSpokenMaxIntensity(String intensity);
+
+  /// Settings row: toggles the monitor's spoken intensity announcement
+  ///
+  /// In en, this message translates to:
+  /// **'Speak estimated intensity'**
+  String get eewSpokenAnnouncementTitle;
+
+  /// Explains what the spoken-announcement toggle does and when it speaks
+  ///
+  /// In en, this message translates to:
+  /// **'When the seismic monitor is open, the estimated intensity is read aloud before the warning sound plays.'**
+  String get eewSpokenAnnouncementDescription;
 }
 
 class _AppLocalizationsDelegate

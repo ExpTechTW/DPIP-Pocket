@@ -3232,6 +3232,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String eewSpokenMaxIntensity(String intensity) {
     return '預估最大震度，$intensity。';
   }
+
+  @override
+  String get eewSpokenAnnouncementTitle => '朗读预估烈度';
+
+  @override
+  String get eewSpokenAnnouncementDescription => '打开强震监视器时，先用语音朗读预估烈度，再播放警示音。';
 }
 
 /// The translations for Chinese, using the Han script (`zh_Hans`).
@@ -6461,6 +6467,12 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String eewSpokenMaxIntensity(String intensity) {
     return '预估最大烈度，$intensity。';
   }
+
+  @override
+  String get eewSpokenAnnouncementTitle => '朗读预估烈度';
+
+  @override
+  String get eewSpokenAnnouncementDescription => '打开强震监视器时，先用语音朗读预估烈度，再播放警示音。';
 }
 
 /// The translations for Chinese, as used in Hong Kong, using the Han script (`zh_Hant_HK`).
@@ -9690,6 +9702,12 @@ class AppLocalizationsZhHantHk extends AppLocalizationsZh {
   String eewSpokenMaxIntensity(String intensity) {
     return '預估最大震度，$intensity。';
   }
+
+  @override
+  String get eewSpokenAnnouncementTitle => '朗讀預估震度';
+
+  @override
+  String get eewSpokenAnnouncementDescription => '開啟強震監視器時，先以語音朗讀預估震度，再播放警示音。';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -12919,4 +12937,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String eewSpokenMaxIntensity(String intensity) {
     return '預估最大震度，$intensity。';
   }
+
+  @override
+  String get eewSpokenAnnouncementTitle => '朗讀預估震度';
+
+  @override
+  String get eewSpokenAnnouncementDescription => '開啟強震監視器時，先以語音朗讀預估震度，再播放警示音。';
 }

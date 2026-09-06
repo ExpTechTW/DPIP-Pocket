@@ -3249,4 +3249,11 @@ class AppLocalizationsKo extends AppLocalizations {
   String eewSpokenMaxIntensity(String intensity) {
     return '예상 최대 진도, $intensity.';
   }
+
+  @override
+  String get eewSpokenAnnouncementTitle => '예상 진도 음성 안내';
+
+  @override
+  String get eewSpokenAnnouncementDescription =>
+      '지진 모니터를 열었을 때 경보음보다 먼저 예상 진도를 음성으로 안내합니다.';
 }

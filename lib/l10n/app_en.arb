@@ -3962,11 +3962,27 @@
   "eewSpokenLocalIntensity": "Estimated intensity at your location: {intensity}.",
   "@eewSpokenLocalIntensity": {
     "description": "Short foreground TTS phrase before an EEW warning sound",
-    "placeholders": {"intensity": {"type": "String"}}
+    "placeholders": {
+      "intensity": {
+        "type": "String"
+      }
+    }
   },
   "eewSpokenMaxIntensity": "Estimated maximum intensity: {intensity}.",
   "@eewSpokenMaxIntensity": {
     "description": "TTS fallback when the device location is unavailable",
-    "placeholders": {"intensity": {"type": "String"}}
+    "placeholders": {
+      "intensity": {
+        "type": "String"
+      }
+    }
+  },
+  "eewSpokenAnnouncementTitle": "Speak estimated intensity",
+  "eewSpokenAnnouncementDescription": "When the seismic monitor is open, the estimated intensity is read aloud before the warning sound plays.",
+  "@eewSpokenAnnouncementTitle": {
+    "description": "Settings row: toggles the monitor's spoken intensity announcement"
+  },
+  "@eewSpokenAnnouncementDescription": {
+    "description": "Explains what the spoken-announcement toggle does and when it speaks"
   }
 }

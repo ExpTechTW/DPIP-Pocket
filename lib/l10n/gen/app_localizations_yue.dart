@@ -3232,4 +3232,10 @@ class AppLocalizationsYue extends AppLocalizations {
   String eewSpokenMaxIntensity(String intensity) {
     return '預估最大震度，$intensity。';
   }
+
+  @override
+  String get eewSpokenAnnouncementTitle => '朗讀預估震度';
+
+  @override
+  String get eewSpokenAnnouncementDescription => '開咗強震監視器嘅時候，會先讀出預估震度，之後先播警示音。';
 }

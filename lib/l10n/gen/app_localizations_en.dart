@@ -3310,4 +3310,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String eewSpokenMaxIntensity(String intensity) {
     return 'Estimated maximum intensity: $intensity.';
   }
+
+  @override
+  String get eewSpokenAnnouncementTitle => 'Speak estimated intensity';
+
+  @override
+  String get eewSpokenAnnouncementDescription =>
+      'When the seismic monitor is open, the estimated intensity is read aloud before the warning sound plays.';
 }

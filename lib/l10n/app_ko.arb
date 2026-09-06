@@ -1984,5 +1984,7 @@
   "bugTrackerSortMostDiscussed": "답글 많은 순",
   "bugTrackerStaff": "스태프",
   "eewSpokenLocalIntensity": "현재 위치 예상 진도, {intensity}.",
-  "eewSpokenMaxIntensity": "예상 최대 진도, {intensity}."
+  "eewSpokenMaxIntensity": "예상 최대 진도, {intensity}.",
+  "eewSpokenAnnouncementTitle": "예상 진도 음성 안내",
+  "eewSpokenAnnouncementDescription": "지진 모니터를 열었을 때 경보음보다 먼저 예상 진도를 음성으로 안내합니다."
 }
